@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us - Armenian Duduk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #2c2c2c;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .logo {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 700;
+            color: #8B4513;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo-subtitle {
+            font-size: clamp(0.6rem, 2vw, 0.7rem);
+            font-weight: 400;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(0.8rem, 2vw, 1.3rem);
+            list-style: none;
+            color: #8B4513;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #834112;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #D2B48C;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #8B4513;
+            transition: 0.3s;
+        }
+
+        .hero {
+            height: clamp(30vh, 40vh, 50vh);
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: clamp(60px, 10vh, 70px);
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after,
+        .hero .bg-image-3 {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .hero::before {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('gallery/galleryduduk4.png');
+            opacity: 1;
+        }
+
+        .hero::after {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('gallery/galleryduduk5.png');
+            opacity: 0;
+        }
+
+        .hero .bg-image-3 {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('gallery/galleryduduk4.png');
+            opacity: 0;
+        }
+
+        .hero::before {
+            animation: fadeImage1 20s infinite;
+        }
+
+        .hero::after {
+            animation: fadeImage2 20s infinite;
+        }
+
+        .hero .bg-image-3 {
+            animation: fadeImage3 20s infinite;
+        }
+
+        @keyframes fadeImage1 {
+            0%, 25% { opacity: 1; }
+            30% { opacity: 0; }
+            58.33% { opacity: 0; }
+            63.33% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeImage2 {
+            0%, 25% { opacity: 0; }
+            30% { opacity: 1; }
+            55% { opacity: 1; }
+            60% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fadeImage3 {
+            0%, 85% { opacity: 0; }
+            88.33% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(3rem, 10vw, 6rem) 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 5vw, 5rem);
+        }
+
+        .contact-info {
+            padding-right: clamp(1rem, 3vw, 2rem);
+        }
+
+        .contact-info h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 300;
+            color: #8B4513;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-info p {
+            color: #555;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+            line-height: 1.9;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        }
+
+        .info-block {
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            background: #f8f5f2;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .info-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .info-block h3 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            color: #8B4513;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-block h3::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #8B4513;
+            border-radius: 2px;
+        }
+
+        .info-block p {
+            color: #555;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .info-block a {
+            color: #8B4513;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .info-block a:hover {
+            color: #A0522D;
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: #f8f5f2;
+            padding: clamp(2rem, 5vw, 3rem);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.6rem, 4vw, 2rem);
+            font-weight: 300;
+            color: #8B4513;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #555;
+            font-weight: 500;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: clamp(0.9rem, 2.5vw, 1.2rem) clamp(1rem, 2.5vw, 1.2rem);
+            border: 2px solid #e0d5c7;
+            border-radius: 6px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-family: inherit;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B4513;
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: clamp(1rem, 2.5vw, 1.2rem);
+            background: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #A0522D;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .map-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% clamp(3rem, 10vw, 6rem) 5%;
+        }
+
+        .map-container {
+            width: 100%;
+            height: clamp(300px, 50vw, 450px);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .logo-img {
+            height: clamp(35px, 8vw, 45px);
+            width: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: white;
+            padding: clamp(2rem, 5vw, 3rem) 5%;
+            text-align: center;
+        }
+
+        .copyright {
+            color: #999;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        }
+
+        /* Enhanced Media Queries */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: clamp(0.5rem, 1.5vw, 1rem);
+            }
+
+            .nav-links a {
+                font-size: clamp(0.7rem, 2vw, 0.85rem);
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 4vw, 2.5rem);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: clamp(2rem, 5vw, 3rem);
+                padding: clamp(2rem, 8vw, 4rem) 5%;
+            }
+
+            .contact-info {
+                padding-right: 0;
+            }
+
+            .contact-info h2 {
+                font-size: clamp(1.6rem, 3.5vw, 2rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 4%;
+            }
+
+            .logo {
+                font-size: clamp(1rem, 3vw, 1.2rem);
+            }
+
+            .logo-img {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: clamp(0.9rem, 3vw, 1.1rem);
+                padding: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero {
+                margin-top: 60px;
+                min-height: 30vh;
+                height: auto;
+                padding: clamp(2rem, 5vw, 3rem) 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 4vw, 2rem);
+                letter-spacing: 1.5px;
+            }
+
+            .contact-container {
+                padding: clamp(2rem, 5vw, 3rem) 5%;
+                gap: clamp(1.5rem, 4vw, 2.5rem);
+            }
+
+            .contact-info h2 {
+                font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+            }
+
+            .contact-info > p {
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
+                margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .info-block {
+                padding: clamp(1rem, 3vw, 1.5rem);
+                margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .info-block h3 {
+                font-size: clamp(1rem, 2.5vw, 1.1rem);
+            }
+
+            .info-block p {
+                font-size: clamp(0.85rem, 2vw, 0.95rem);
+            }
+
+            .contact-form {
+                padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+            }
+
+            .contact-form h2 {
+                font-size: clamp(1.4rem, 3.5vw, 1.6rem);
+            }
+
+            .form-group {
+                margin-bottom: clamp(1rem, 3vw, 1.5rem);
+            }
+
+            .form-group label {
+                font-size: clamp(0.8rem, 2vw, 0.85rem);
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: clamp(0.8rem, 2vw, 0.9rem) clamp(0.8rem, 2vw, 1rem);
+                font-size: clamp(0.85rem, 2vw, 0.95rem);
+            }
+
+            .submit-btn {
+                padding: clamp(0.8rem, 2vw, 1rem);
+                font-size: clamp(0.8rem, 2vw, 0.9rem);
+                letter-spacing: 1px;
+            }
+
+            .map-section {
+                padding: 0 5% clamp(2rem, 5vw, 3rem) 5%;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            footer {
+                padding: clamp(1.5rem, 4vw, 2rem) 5%;
+                font-size: clamp(0.8rem, 2vw, 0.9rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
+            }
+
+            .logo-subtitle {
+                font-size: clamp(0.5rem, 1.5vw, 0.6rem);
+            }
+
+            .hero h1 {
+                font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+                letter-spacing: 1px;
+            }
+
+            .contact-info h2 {
+                font-size: clamp(1.3rem, 3vw, 1.5rem);
+            }
+
+            .contact-form h2 {
+                font-size: clamp(1.2rem, 3vw, 1.4rem);
+            }
+
+            .info-block {
+                padding: clamp(0.8rem, 2.5vw, 1.2rem);
+            }
+
+            .contact-form {
+                padding: clamp(1rem, 3vw, 1.5rem) clamp(0.8rem, 2vw, 1rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <div class="logo">ARTHUR GRIGORYAN</div>
+                <div class="logo-subtitle">Official Website</div>
+            </div>
+            <img class="logo-img" src="imgs/logo.png" alt="logo">
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="home.html#instruments">Duduks</a></li>
+                <li><a href="home.html#heritage">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="bg-image-3"></div>
+        <div class="hero-content">
+            <h1>CONTACT US</h1>
+        </div>
+    </section>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>We'd love to hear from you. Whether you're interested in purchasing an instrument, learning more about our craft, or have any questions, feel free to reach out.</p>
+
+            <div class="info-block">
+                <h3>Workshop Address</h3>
+                <p><strong>Arthur Grigoryan</strong></p>
+                <p>Movses Khorenatsi 1 pak., home 29</p>
+                <p>Yerevan 0010</p>
+                <p>Armenia</p>
+            </div>
+
+            <div class="info-block">
+                <h3>Email</h3>
+                <p><a href="mailto:art@armenianduduk.am">art@armenianduduk.am</a></p>
+            </div>
+
+            <div class="info-block">
+                <h3>Websites</h3>
+                <p><a href="https://www.armenianduduk.am" target="_blank">armenianduduk.am</a></p>
+            </div>
+
+            <div class="info-block">
+                <h3>Live Support</h3>
+                <p><strong>Phone: </strong><a href="tel:+37494884058">+37494884058</a></p>
+                <p><strong>Email:</strong> <a href="mailto:art@armenianduduk.am">art@armenianduduk.am</a></p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send us a Message</h2>
+            <form id="contactForm" action="contact.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+        
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="map-section">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3047.7745772857756!2d44.50991!3d40.17283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDEwJzIyLjIiTiA0NMKwMzAnMzUuNyJF!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2025 Armenian Duduk - Arthur Grigoryan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 70;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Contact form handling with actual submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            // Get form data
+            const formData = new FormData(form);
+            
+            // Validate
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const subject = formData.get('subject').trim();
+            const message = formData.get('message').trim();
+            
+            if (!name || !email || !subject || !message) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showMessage('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Send form data
+            fetch('contact.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                showMessage('Thank you! Your message has been sent successfully to art@armenianduduk.am', 'success');
+                form.reset();
+            })
+            .catch(error => {
+                showMessage('Sorry, there was an error sending your message. Please try again or email directly to art@armenianduduk.am', 'error');
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        function showMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = text;
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                animation: slideIn 0.3s ease-out;
+                background: ${type === 'success' ? '#28a745' : '#dc3545'};
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                max-width: 90%;
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
