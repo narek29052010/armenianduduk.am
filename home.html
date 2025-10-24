@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armenian Duduk - Arthur Grigoryan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #2c2c2c;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8B4513;
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.3rem;
+            list-style: none;
+            color: #8B4513;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #834112;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #D2B48C;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #8B4513;
+            transition: 0.3s;
+        }
+
+        .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 70px;
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after,
+.hero .bg-image-3 {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: opacity 2s ease-in-out; /* Плавный переход для opacity */
+}
+
+/* Установка фоновых изображений */
+.hero::before {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('gallery/galleryduduk4.png');
+    opacity: 1;
+}
+
+.hero::after {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('gallery/galleryduduk5.png');
+    opacity: 0;
+}
+
+.hero .bg-image-3 {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('gallery/galleryduduk4.png');
+    opacity: 0;
+}
+
+/* Анимация для переливания */
+@keyframes heroSlideshow {
+    0%, 25% {
+        /* Первое изображение видно */
+    }
+    30% {
+        /* Переход ко второму изображению */
+    }
+    33.33% {
+        /* Второе изображение полностью видно */
+    }
+    55% {
+        /* Второе изображение начинает исчезать */
+    }
+    58.33% {
+        /* Первое изображение снова появляется */
+    }
+    85% {
+        /* Первое изображение полностью видно */
+    }
+    88.33% {
+        /* Переход к третьему изображению */
+    }
+    100% {
+        /* Третье изображение полностью видно */
+    }
+}
+
+/* Анимация прозрачности */
+.hero {
+    animation: none; /* Убираем старую анимацию с основного элемента */
+}
+
+.hero::before {
+    animation: fadeImage1 20s infinite;
+}
+
+.hero::after {
+    animation: fadeImage2 20s infinite;
+}
+
+.hero .bg-image-3 {
+    animation: fadeImage3 20s infinite;
+}
+
+@keyframes fadeImage1 {
+    0%, 25% { opacity: 1; }
+    30% { opacity: 0; }
+    58.33% { opacity: 0; }
+    63.33% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeImage2 {
+    0%, 25% { opacity: 0; }
+    30% { opacity: 1; }
+    55% { opacity: 1; }
+    60% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeImage3 {
+    0%, 85% { opacity: 0; }
+    88.33% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #8B4513;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            background: #A0522D;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        .section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #8B4513;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.8rem;
+            text-align: left;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #2c2c2c;
+        }
+
+        .product-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            color: #8B4513;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #8B4513;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .features {
+            background: #f8f5f2;
+            padding: 5rem 5%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #8B4513;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+
+        .feature-text {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .heritage {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 5%;
+        }
+
+        .heritage-image {
+            height: 500px;
+            background-image: url('imgs/art.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .heritage-content h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: #8B4513;
+            letter-spacing: 1px;
+        }
+
+        .heritage-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: #8B4513;
+            letter-spacing: 0.5px;
+        }
+
+        .heritage-content p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #D2B48C;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #D2B48C;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            text-align: center;
+            color: #999;
+        }
+
+        .logo-img {
+            text-align: center;
+            height: 45px;
+            width: auto;
+            margin-left: 130px;
+        }
+
+        .free-shipping {
+            color: #17752d;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* TABLET (768px - 1024px) */
+        @media (max-width: 1024px) {
+            .logo-img {
+                margin-left: 50px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 4rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.3rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            .heritage {
+                gap: 3rem;
+            }
+
+            .heritage-image {
+                height: 400px;
+            }
+
+            .heritage-content h2 {
+                font-size: 2rem;
+            }
+
+            .heritage-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* MOBILE (до 768px) */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 4%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-img {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .hero {
+                margin-top: 60px;
+                min-height: 80vh;
+                height: auto;
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 1px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .cta-button {
+                padding: 0.9rem 2rem;
+                font-size: 0.85rem;
+            }
+
+            .section {
+                padding: 3rem 4%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-image {
+                height: 200px;
+            }
+
+            .product-info {
+                padding: 1.5rem;
+            }
+
+            .product-title {
+                font-size: 1.3rem;
+            }
+
+            .product-desc {
+                font-size: 0.95rem;
+            }
+
+            .product-price {
+                font-size: 1.5rem;
+            }
+
+            .free-shipping {
+                font-size: 1rem;
+            }
+
+            .features {
+                padding: 3rem 4%;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-icon {
+                font-size: 3rem;
+            }
+
+            .feature-title {
+                font-size: 1.2rem;
+            }
+
+            .heritage {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 4%;
+            }
+
+            .heritage-image {
+                height: 300px;
+            }
+
+            .heritage-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .heritage-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .heritage-content p {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 3rem 4%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* SMALL MOBILE (до 480px) */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1rem;
+            }
+
+            .logo-subtitle {
+                font-size: 0.6rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .product-title {
+                font-size: 1.2rem;
+            }
+
+            .feature-icon {
+                font-size: 2.5rem;
+            }
+
+            .heritage-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <div class="logo">ARTHUR GRIGORYAN</div>
+                <div class="logo-subtitle">Official Website</div>
+            </div>
+            <img class="logo-img" src="imgs/logo.png" alt="logo">
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#instruments">Duduks</a></li>
+                <li><a href="#heritage">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="bg-image-3"></div>
+        <div class="hero-content">
+            <h1>ARTHUR GRIGORYAN</h1>
+            <p>Master Craftsman of Traditional Armenian Musical Instruments</p>
+            <a href="#instruments" class="cta-button">Shop Our Collection</a>
+        </div>
+    </section>
+
+    <section class="section" id="instruments">
+        <h2 class="section-title">Our Instruments</h2>
+        <p class="section-subtitle">Handcrafted Armenian musical instruments by Arthur H. Grigoryan</p>
+        
+        <div class="products-grid">
+            <a href="traditionalduduk.html" class="product-card">
+                <div class="product-image" style="background-image: url('imgs/trad1.png');">
+                    <div class="product-badge">Best Seller</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Traditional Duduk</h3>
+                    <p class="product-desc">Classic Armenian duduk crafted from aged apricot wood. Rich, warm tone perfect for traditional performances.</p>
+                    <div class="product-price">$330</div>
+                    <div class="free-shipping">Free shipping</div>
+                </div>
+            </a>
+
+            <a href="bassduduks.html" class="product-card">
+                <div class="product-image" style="background-image: url('imgs/trad1.png');">
+                    <div class="product-badge">Professional</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bass Duduks</h3>
+                    <p class="product-desc">Lower-pitched variant with deep, resonant sound. Ideal for ensemble performances and recordings.</p>
+                    <div class="product-price">$0</div>
+                    <div class="free-shipping">Free shipping</div>
+                </div>
+            </a>
+
+            <a href="damduduks.html" class="product-card">
+                <div class="product-image" style="background-image: url('imgs/damduduk.png');">
+                    <div class="product-badge">Master Craft</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Dam Duduk</h3>
+                    <p class="product-desc">Premium concert-grade instrument with unparalleled resonance. Preferred by master musicians worldwide.</p>
+                    <div class="product-price">$500</div>
+                    <div class="free-shipping">Free shipping</div>
+                </div>
+            </a>
+
+            <a href="zurna.html" class="product-card">
+                <div class="product-image" style="background-image: url('imgs/trad1.png');">
+                    <div class="product-badge">Traditional</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Zurna</h3>
+                    <p class="product-desc">Loud double reed wind instrument. Essential for Armenian folk music and celebrations.</p>
+                    <div class="product-price">$0</div>
+                    <div class="free-shipping">Free shipping</div>
+                </div>
+            </a>
+
+            <a href="dudukswithvalves.html" class="product-card">
+                <div class="product-image" style="background-image: url('imgs/trad1.png');">
+                    <div class="product-badge">Accessory</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Duduks with valves</h3>
+                    <p class="product-desc">Handcrafted reeds made from premium cane. Essential for optimal sound quality and performance.</p>
+                    <div class="product-price">$0</div>
+                    <div class="free-shipping">Free shipping</div>
+                </div>
+            </a>
+
+            <a href="shviflute.html" class="product-card">
+                <div class="product-image" style="background-image: url('imgs/trad1.png');">
+                    <div class="product-badge">Student</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Shvi Flute</h3>
+                    <p class="product-desc">Armenian fipple flute perfect for beginners. Easy to play with authentic traditional sound.</p>
+                    <div class="product-price">$0</div>
+                    <div class="free-shipping">Free shipping</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🎵</div>
+                <h3 class="feature-title">Authentic Sound</h3>
+                <p class="feature-text">Every instrument produces the signature soulful, melancholic tone that has defined Armenian music for millennia.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🌳</div>
+                <h3 class="feature-title">Premium Materials</h3>
+                <p class="feature-text">Crafted exclusively from aged apricot wood, ensuring optimal acoustic properties and durability.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">✋</div>
+                <h3 class="feature-title">Master Craftsmen</h3>
+                <p class="feature-text">Each duduk is handmade by skilled artisans who have inherited techniques passed down through generations.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎖️</div>
+                <h3 class="feature-title">UNESCO Heritage</h3>
+                <p class="feature-text">The duduk is recognized by UNESCO as a Masterpiece of the Intangible Heritage of Humanity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="heritage" id="heritage">
+            <div class="heritage-image"></div>
+            <div class="heritage-content">
+                <h2>Master Craftsmen</h2>
+                <h3>Arthur H. Grigoryan -GHA-</h3>
+                <p><strong>Arthur Grigoryan</strong>, the son of Hovsep Grigoryan, has been preparing musical instruments since 1997. Studying under his father, he has adopted the unique characteristics of these instruments. Considering the best masters today, Arthur keeps the family traditions alive while also improving the instruments with new technologies.</p>
+                <p>And most of today's best dudukists play the musical instruments prepared exclusively by Arthur Grigoryan, including the world-wide favored <strong>Djivan Gasparyan</strong>. Each instrument is handcrafted from carefully selected apricot wood, ensuring the authentic, soulful sound that has defined Armenian music for generations.</p>
+                <a href="contacts.html" class="cta-button">Order Custom Instrument</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Armenian Duduk, Bass Duduk, Zurna, Reed, Shvi Made by Arthur H. Grigoryan -GHA-</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#instruments">Shop Instruments</a>
+                <a href="#heritage">About Arthur</a>
+                <a href="contacts.html">Contact Us</a>
+                <a href="gallery.html">Gallery</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Armenia</p>
+                <p>Arthur H. Grigoryan -GHA-</p>
+                <p>Traditional Armenian Instruments</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Our Instruments</h3>
+                <p>Traditional Duduk</p>
+                <p>Bass Duduk</p>
+                <p>Zurna & Shvi</p>
+                <p>Custom Reeds</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 ArmenianDuduk.am | All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 70;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
